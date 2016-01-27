@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<ArrayOfLesson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Lesson>
+    <subject>
+      <name>C#</name>
+      <topics>
+        <string>Binary and xml serializations</string>
+        <string>Global project</string>
+      </topics>
+    </subject>
+    <topic>Binary and xml serializations</topic>
+    <teacher>
+      <name>Max</name>
+      <login>Max</login>
+      <password>Max</password>
+      <salary>0</salary>
+      <TeacherId>0</TeacherId>
+    </teacher>
+    <pupil_group>
+      <group_name>P11014</group_name>
+      <pupils>
+        <Key>
+          <int>0</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Andrew</name>
+            <PupilId>0</PupilId>
+          </Pupil>
+        </Value>
+        <Key>
+          <int>1</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Kolya</name>
+            <PupilId>1</PupilId>
+          </Pupil>
+        </Value>
+        <Key>
+          <int>2</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Olya</name>
+            <PupilId>2</PupilId>
+          </Pupil>
+        </Value>
+        <Key>
+          <int>3</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Ira</name>
+            <PupilId>3</PupilId>
+          </Pupil>
+        </Value>
+      </pupils>
+    </pupil_group>
+    <marks>
+      <Mark pupilId="0" teacherId="0">
+        <value>10</value>
+        <for_what>home work</for_what>
+      </Mark>
+      <Mark pupilId="1" teacherId="0">
+        <value>10</value>
+        <for_what>class work</for_what>
+      </Mark>
+      <Mark pupilId="2" teacherId="0">
+        <value>10</value>
+        <for_what>good actions</for_what>
+      </Mark>
+      <Mark pupilId="3" teacherId="0">
+        <value>10</value>
+        <for_what>home work</for_what>
+      </Mark>
+    </marks>
+  </Lesson>
+  <Lesson>
+    <subject>
+      <name>C#</name>
+      <topics>
+        <string>Binary and xml serializations</string>
+        <string>Global project</string>
+      </topics>
+    </subject>
+    <topic>Binary and xml serializations</topic>
+    <teacher>
+      <name>Alex</name>
+      <login>Alex</login>
+      <password>Alex</password>
+      <salary>0</salary>
+      <TeacherId>1</TeacherId>
+    </teacher>
+    <pupil_group>
+      <group_name>P11015</group_name>
+      <pupils>
+        <Key>
+          <int>4</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Jon</name>
+            <PupilId>4</PupilId>
+          </Pupil>
+        </Value>
+        <Key>
+          <int>5</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Brad</name>
+            <PupilId>5</PupilId>
+          </Pupil>
+        </Value>
+        <Key>
+          <int>6</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Josh</name>
+            <PupilId>6</PupilId>
+          </Pupil>
+        </Value>
+        <Key>
+          <int>7</int>
+        </Key>
+        <Value>
+          <Pupil>
+            <name>Katrin</name>
+            <PupilId>7</PupilId>
+          </Pupil>
+        </Value>
+      </pupils>
+    </pupil_group>
+    <marks />
+  </Lesson>
+</ArrayOfLesson>

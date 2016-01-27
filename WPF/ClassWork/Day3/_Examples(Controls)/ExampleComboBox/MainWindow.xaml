@@ -1,0 +1,81 @@
+﻿<Window x:Class="ExampleComboBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <ComboBox HorizontalAlignment="Left" MinWidth="150" Margin="10,5" SelectedIndex="0" >
+            <ComboBox.Items>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Check.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">С#</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Check.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">WinForms</TextBlock>
+                    </StackPanel> </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Check.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">ADO.NET</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/NoCheck.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">WCF</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox.Items>
+        </ComboBox>
+
+        <ComboBox x:Name="cbSubjects" HorizontalAlignment="Left" MinWidth="150" Margin="10,5" SelectedIndex="0" SelectionChanged="cbSubjects_SelectionChanged"  AlternationCount="2" BorderThickness="3,3,3,2" FontSize="14" FontWeight="Bold" Foreground="#FF1D90F0">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFDCF5EE" Offset="0.004"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFB2D4CB" Offset="0.5"/>
+                    <GradientStop Color="#FFC8F5E9" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        
+        <Label x:Name="lbInfoSel"></Label>
+
+        <ComboBox HorizontalAlignment="Left" MinWidth="150" Margin="10,5" SelectedIndex="0" >
+            <ComboBox.Items>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="0,0,5,0" VerticalAlignment="Center"></CheckBox>
+                        <Image Source="Images/Check.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">С#</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="0,0,5,0" VerticalAlignment="Center"></CheckBox>
+                        <Image Source="Images/Check.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">WinForms</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="0,0,5,0" VerticalAlignment="Center"></CheckBox>
+                        <Image Source="Images/Check.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">ADO.NET</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="0,0,5,0" VerticalAlignment="Center"></CheckBox>
+                        <Image Source="Images/NoCheck.png" Margin="0,0,5,0"></Image>
+                        <TextBlock FontSize="13" FontWeight="Bold">WCF</TextBlock>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox.Items>
+        </ComboBox>
+
+    </StackPanel>
+</Window>

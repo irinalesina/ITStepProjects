@@ -1,0 +1,98 @@
+﻿<Window x:Class="EnterpriseResourcePlanning.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:EnterpriseResourcePlanning"
+        xmlns:dataVisual="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        Title="MainWindow" Height="413" Width="726" x:Name="mainWindow" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <local:ConvertEmployeeToProjects x:Key="ConvertEmployeeToProjects"/>
+        <local:ConvertDateTimeToDate x:Key="ConvertDateTimeToDate"/>
+        <local:ConvertEmployeeToQualities x:Key="ConvertEmployeeToQualities"/>
+        <local:ConverEmployeeToAllInfo x:Key="ConverEmployeeToAllInfo"/>
+        
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <!--Стиль для элементов ListBoxItem-->
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border Name="Bd" Margin="{TemplateBinding Control.Padding}">
+                            <ContentPresenter></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!--При наведении мыши-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="TextBlock.FontSize" Value="20"></Setter>
+                                <Setter TargetName="Bd" Property="BorderThickness" Value="1"></Setter>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="Gray"></Setter>
+                            </Trigger>
+                            <!--При выборе-->
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+                                <Setter Property="TextBlock.FontSize" Value="20"></Setter>
+                                <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                                <Setter TargetName="Bd" Property="Background" Value="Gray"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="ViewEmployee" DataType="TextBlock">
+            <Grid x:Name="LBItem">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="IPhoto" Grid.Column="0" Grid.Row="0" Source="{Binding Path=Photo}"/>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="0, 10, 0, 0">
+                        <TextBlock x:Name="TBFirstName" Grid.Column="0" Grid.Row="0" Text="{Binding Path=FirstName}"/>
+                        <TextBlock x:Name="TBLastName" Grid.Column="0" Grid.Row="1"  Text="{Binding Path=LastName}"/>
+                    </StackPanel>
+                </Grid>
+                <TextBlock ToolTip="{Binding Converter={StaticResource ConverEmployeeToAllInfo}}"/>
+            </Grid>
+            
+            
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="221*"/>
+            <RowDefinition Height="161*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="253*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="LBEmployees" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ItemTemplate="{StaticResource ViewEmployee}"
+                 HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch"
+                 ItemsSource="{Binding ElementName=mainWindow, Path=Employees}"/>
+
+        <DataGrid x:Name="DGEmployeeProjects" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" 
+                  ColumnHeaderHeight="30" SelectionMode="Single" AutoGenerateColumns="False" CanUserReorderColumns="False" SelectionUnit="FullRow" 
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+                  ItemsSource="{Binding ElementName=LBEmployees, Path=SelectedItem, Converter={ StaticResource ConvertEmployeeToProjects }}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Project name" Width="25*" Binding="{Binding ProjectName}"/>
+                <DataGridTextColumn Header="Customer" Width="25*" Binding="{Binding Customer}"/>
+                <DataGridTextColumn Header="Begin date" Width="25*" Binding="{Binding Begin, Converter={StaticResource ConvertDateTimeToDate}}"/>
+                <DataGridTextColumn Header="End date" Width="25*" Binding="{Binding End, Converter={StaticResource ConvertDateTimeToDate}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <dataVisual:Chart x:Name="CEmployeeStatictic" Grid.Column="1" Grid.Row="0" Title="EMPLOYEE QUALITIES" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <dataVisual:PieSeries DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True"
+                  ItemsSource="{Binding ElementName=LBEmployees, Path=SelectedItem, Converter={ StaticResource ConvertEmployeeToQualities }}"/>
+        </dataVisual:Chart>
+        <!--<DockPanel x:Name="DPEmployeeQualities" Grid.Column="1" Grid.Row="0"/>-->
+    </Grid>
+</Window>

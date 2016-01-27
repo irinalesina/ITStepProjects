@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Metro", "Metro\Metro.vcxproj", "{68FEAE0C-CB1C-4AB7-A69F-861D1EBC896B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68FEAE0C-CB1C-4AB7-A69F-861D1EBC896B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{68FEAE0C-CB1C-4AB7-A69F-861D1EBC896B}.Debug|Win32.Build.0 = Debug|Win32
+		{68FEAE0C-CB1C-4AB7-A69F-861D1EBC896B}.Release|Win32.ActiveCfg = Release|Win32
+		{68FEAE0C-CB1C-4AB7-A69F-861D1EBC896B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

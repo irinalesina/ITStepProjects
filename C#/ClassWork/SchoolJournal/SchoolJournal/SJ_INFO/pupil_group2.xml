@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<PupilsGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <name>P11015</name>
+  <pupils>
+    <Key>
+      <int>4</int>
+    </Key>
+    <Value>
+      <Pupil pupilId="4">
+        <name>Jon</name>
+        <PupilId>4</PupilId>
+      </Pupil>
+    </Value>
+    <Key>
+      <int>5</int>
+    </Key>
+    <Value>
+      <Pupil pupilId="5">
+        <name>Brad</name>
+        <PupilId>5</PupilId>
+      </Pupil>
+    </Value>
+    <Key>
+      <int>6</int>
+    </Key>
+    <Value>
+      <Pupil pupilId="6">
+        <name>Josh</name>
+        <PupilId>6</PupilId>
+      </Pupil>
+    </Value>
+    <Key>
+      <int>7</int>
+    </Key>
+    <Value>
+      <Pupil pupilId="7">
+        <name>Katrin</name>
+        <PupilId>7</PupilId>
+      </Pupil>
+    </Value>
+  </pupils>
+</PupilsGroup>>

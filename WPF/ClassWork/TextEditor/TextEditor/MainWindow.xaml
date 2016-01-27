@@ -1,0 +1,51 @@
+﻿<Window x:Class="TextEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:TextEditor"
+        Title="MainWindow" Height="368" Width="1078" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:BrushColorConverter x:Key="BrushColorConverter"/>
+        <local:MainWindow x:Key="styles"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="268*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="textBoxEditor" HorizontalAlignment="Stretch" Grid.Row="2" TextWrapping="Wrap" DataContext="{Binding ElementName=comboBoxStyles, Path=SelectedItem}"
+                 Text="Alexandre&#xD;&#xA;by Guy de Maupassant&#xD;&#xA;&#xD;&#xA;At four o'clock that day, as on every other day, Alexandre rolled the three-wheeled chair for cripples up to the door of the little house; then, in obedience to the doctor's orders, he would push his old and infirm mistress about until six o'clock.&#xD;&#xA;&#xD;&#xA;When he had placed the light vehicle against the step, just at the place where the old lady could most easily enter it, he went into the house; and soon a furious, hoarse old soldier's voice was heard cursing inside the house: it issued from the master, the retired ex-captain of infantry, Joseph Maramballe.&#xD;&#xA;&#xD;&#xA;Then could be heard the noise of doors being slammed, chairs being pushed about, and hasty footsteps; then nothing more. After a few seconds, Alexandre reappeared on the threshold, supporting with all his strength Madame Maramballe, who was exhausted from the exertion of descending the stairs. When she was at last settled in the rolling chair, Alexandre passed behind it, grasped the handle, and set out toward the river.&#xD;&#xA;&#xD;&#xA;Thus they crossed the little town every day amid the respectful greeting, of all. These bows were perhaps meant as much for the servant as for the mistress, for if she was loved and esteemed by all, this old trooper, with his long, white, patriarchal beard, was considered a model domestic.&#xD;&#xA;&#xD;&#xA;The July sun was beating down unmercifully on the street, bathing the low houses in its crude and burning light. Dogs were sleeping on the sidewalk in the shade of the houses, and Alexandre, a little out of breath, hastened his footsteps in order sooner to arrive at the avenue which leads to the water.&#xD;&#xA;&#xD;&#xA;Madame Maramballe was already slumbering under her white parasol, the point of which sometimes grazed along the man's impassive face. As soon as they had reached the Allee des Tilleuls, she awoke in the shade of the trees, and she said in a kindly voice: &quot;Go more slowly, my poor boy; you will kill yourself in this heat.&quot;&#xD;&#xA;&#xD;&#xA;Along this path, completely covered by arched linden trees, the Mavettek flowed in its winding bed bordered by willows.&#xD;&#xA;&#xD;&#xA;The gurgling of the eddies and the splashing of the little waves against the rocks lent to the walk the charming music of babbling water and the freshness of damp air. Madame Maramballe inhaled with deep delight the humid charm of this spot and then murmured: &quot;Ah! I feel better now! But he wasn't in a good humor to-day.&quot;&#xD;&#xA;&#xD;&#xA;Alexandre answered: &quot;No, madame.&quot;&#xD;&#xA;&#xD;&#xA;For thirty-five years he had been in the service of this couple, first as officer's orderly, then as simple valet who did not wish to leave his masters; and for the last six years, every afternoon, he had been wheeling his mistress about through the narrow streets of the town. From this long and devoted service, and then from this daily tete-a-tete, a kind of familiarity arose between the old lady and the devoted servant, affectionate on her part, deferential on his.&#xD;&#xA;&#xD;&#xA;They talked over the affairs of the house exactly as if they were equals. Their principal subject of conversation and of worry was the bad disposition of the captain, soured by a long career which had begun with promise, run along without promotion, end ended without glory."
+                 VerticalAlignment="Stretch" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto"
+                 Style="{Binding Path=Value}"
+                 SelectionBrush="#FF299BA6" BorderBrush="{x:Null}" TextDecorations="{x:Null}"/>
+
+        <!--<ComboBox x:Name="comboBoxFontFamily" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1"
+                  FontSize="16" ItemsSource="{Binding Source={x:Static Member=Fonts.SystemFontFamilies}}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontFamily="{Binding .}" Text="{Binding Source}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="Font family:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold"/>-->
+        <!--<Label Content="Text foreground:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold" />
+        <xctk:ColorPicker x:Name="colorPickerTextForeground" Grid.Column="1" Grid.Row="1" SelectedColor="Black"/>
+        <xctk:ColorPicker x:Name="colorPickerTextBackground" Grid.Column="2" Grid.Row="1" SelectedColor="White"/>
+        <Label Content="Text background:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold" />-->
+        <!--<Label Content="Font size:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold" Margin="0,-1,0,1"/>
+        <TextBox x:Name="textBoxFontSize" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 TextWrapping="Wrap" FontSize="16"
+                 Text="{Binding ElementName=textBoxEditor, Path=FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>-->
+        <Label Content="Styles:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold" Margin="0,-1,0,1" />
+        <ComboBox x:Name="comboBoxStyles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1" FontSize="16"/>
+        <Button x:Name="buttonCreateStyle" Content="Create style" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,3,0" VerticalAlignment="Stretch" Click="buttonCreateStyle_Click"
+                FontSize="20" Grid.RowSpan="2"/>
+
+    </Grid>
+</Window>

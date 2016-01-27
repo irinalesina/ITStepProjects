@@ -1,0 +1,48 @@
+﻿<Window x:Class="ExampleDragAndDrop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBox Padding="10"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Text="Перетащите текст из этого поля ввода" Background="LightGreen"/>
+
+
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Padding="20"
+               Background="LightGreen"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               MouseDown="lblSource_MouseDown"
+               AllowDrop="False"
+               Content="или эту метку"/>
+
+        <Label Grid.Row="1"
+               Grid.ColumnSpan="2"
+               Background="LightGoldenrodYellow"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Padding="20"
+               Content="На эту метку"
+               AllowDrop="True"
+               Drop="lblTarget_Drop" Width="400"/>
+
+        <!--
+            AllowDrop="True" - Разрешаем/запрещаем бросать что-либо в этот элемент.
+            Drop="lblTarget_Drop" - Событие при броске в элемент чего-либо.
+        -->
+    </Grid>
+</Window>

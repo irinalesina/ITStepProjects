@@ -1,0 +1,93 @@
+﻿<Window x:Class="TaskManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+        xmlns:local="clr-namespace:TaskManager"
+        Title="MainWindow" Height="514" Width="669" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="OrangeTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:ProcessManager x:Key="processManager"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="429*"/>
+            <ColumnDefinition Width="232*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="139"/>
+            <RowDefinition Height="137*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <ribbon:Ribbon x:Name="Ribbon" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            <ribbon:Ribbon.ApplicationMenu>
+                <ribbon:RibbonApplicationMenu>
+                    <ribbon:RibbonApplicationMenuItem Header="Hello _Ribbon"
+                                                      x:Name="MenuItem1"/>
+                </ribbon:RibbonApplicationMenu>
+            </ribbon:Ribbon.ApplicationMenu>
+
+            <ribbon:RibbonTab x:Name="tabHome" Header="Home">
+                
+                <ribbon:RibbonGroup x:Name="groupRunProcess" 
+                                    Header="Run process" Margin="0">
+                    <ribbon:RibbonButton x:Name="buttonRunProcess"
+                		LargeImageSource="Images\RunProcess.png"
+                		Label="New process" Margin="7,0,-7,0"/>
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup x:Name="groupFindProcess" 
+                                    Header="Find process" Margin="0" Padding="0,0,0,0">
+                    <ribbon:RibbonTextBox x:Name="textBoxFindProcess" Margin="5, 10, 5, 0" HorizontalAlignment="Stretch" TextChanged="textBoxFindProcess_TextChanged"/>
+                    <ribbon:RibbonButton x:Name="buttonFindProcess" SmallImageSource="Images\Search.png" Label="Search" Margin="15, 5, 0, 0" Click="buttonFindProcess_Click"/>
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup x:Name="groupApplyFilter" 
+                                    Header="Apply filter" Margin="0">
+                </ribbon:RibbonGroup>
+                
+            </ribbon:RibbonTab>
+
+            <ribbon:RibbonTab x:Name="tabView" Header="View" Margin="0,0,0,-3">
+                <ribbon:RibbonGroup x:Name="groupDecor" 
+                                    Header="Decor" Margin="0">
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+
+        </ribbon:Ribbon>
+
+        <DataGrid x:Name="dataGridAllProcesses" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" 
+                  SelectionMode="Single" AutoGenerateColumns="False" CanUserReorderColumns="False" SelectionUnit="FullRow" 
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+                  <!--ItemsSource="{Binding Source={StaticResource processManager}, Mode=OneWay, Path=Processes}"-->
+                  <!--SelectedItem="{Binding Source={StaticResource processManager}, Mode=OneWay, Path=CurrentProcess}"-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="10*" Binding="{Binding Path=Id, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Process" CanUserSort="True" Width="35*" Binding="{Binding Path=ProcessName, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Memory" Width="25*" Binding="{Binding Path=WorkingSet64, Mode=OneWay, Converter={StaticResource bytesToKilobytesStringConverter}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="textBlockProcessInfo" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                   TextWrapping="Wrap" Margin="3,0,0,0" Text="{Binding ElementName=dataGridAllProcesses, 
+                   Path=SelectedItem, Converter={StaticResource processToInfoConverter}, Mode=OneWay}"/>
+        </ScrollViewer>
+        
+        <Label x:Name="textblockCurrentProcess" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+               VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+               Content="{Binding Source={StaticResource processManager}, Path=CurrentProcess.ProcessName, Mode=OneWay,
+                Converter={StaticResource processToCurrentProcessName}}"/>
+        
+        <Button x:Name="buttonKillProcess" Content="Kill process" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" Margin="30,15,30,15" FontSize="16" Foreground="#FFFFF9F9" Click="buttonKillProcess_Click"/>
+
+    </Grid>
+</Window>

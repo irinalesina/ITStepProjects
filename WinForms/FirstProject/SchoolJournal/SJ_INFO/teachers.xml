@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ArrayOfTeacher xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Teacher>
+    <name>Max</name>
+    <login>Max</login>
+    <password>Max</password>
+    <salary>0</salary>
+    <TeacherId>0</TeacherId>
+  </Teacher>
+  <Teacher>
+    <name>Alex</name>
+    <login>Alex</login>
+    <password>Alex</password>
+    <salary>0</salary>
+    <TeacherId>1</TeacherId>
+  </Teacher>
+</ArrayOfTeacher>

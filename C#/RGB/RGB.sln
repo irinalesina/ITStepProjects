@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB", "RGB\RGB.csproj", "{B2B354C3-9ED4-4ED1-B2B4-5F7984805908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.UITests", "RGB.UITests\RGB.UITests.csproj", "{831CD4C2-28B5-4BDD-AA0E-34F0E5A25D8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{831CD4C2-28B5-4BDD-AA0E-34F0E5A25D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831CD4C2-28B5-4BDD-AA0E-34F0E5A25D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831CD4C2-28B5-4BDD-AA0E-34F0E5A25D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831CD4C2-28B5-4BDD-AA0E-34F0E5A25D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B354C3-9ED4-4ED1-B2B4-5F7984805908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B354C3-9ED4-4ED1-B2B4-5F7984805908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B354C3-9ED4-4ED1-B2B4-5F7984805908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B354C3-9ED4-4ED1-B2B4-5F7984805908}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+﻿<Window x:Class="ExampleImage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="650" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Margin="5" Grid.Row="0" Grid.Column="0"  Source="Images/index.jpg"></Image>
+        <Image Margin="5" Grid.Row="0" Grid.Column="1"  Source="/ExampleImage;component/Images/index.jpg"></Image>
+         <!--Примеры из кода-->
+        <Image x:Name="image1" Margin="5" Grid.Row="1" Grid.Column="0"></Image>
+        <Image x:Name="image2" Margin="5" Grid.Row="1" Grid.Column="1"></Image>
+
+    </Grid>
+</Window>

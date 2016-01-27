@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MySortedDictionaryOfCharListOfString>
+  <Key>
+    <char>65</char>
+  </Key>
+  <Value>
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>Ab</string>
+      <string>Bc</string>
+      <string>Cd</string>
+    </ArrayOfString>
+  </Value>
+  <Key>
+    <char>66</char>
+  </Key>
+  <Value>
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>Ab</string>
+      <string>Bc</string>
+      <string>Cd</string>
+    </ArrayOfString>
+  </Value>
+  <Key>
+    <char>67</char>
+  </Key>
+  <Value>
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>Ab</string>
+      <string>Bc</string>
+      <string>Cd</string>
+    </ArrayOfString>
+  </Value>
+  <Key>
+    <char>68</char>
+  </Key>
+  <Value>
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>Ab</string>
+      <string>Bc</string>
+      <string>Cd</string>
+    </ArrayOfString>
+  </Value>
+  <Key>
+    <char>69</char>
+  </Key>
+  <Value>
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>Ab</string>
+      <string>Bc</string>
+      <string>Cd</string>
+    </ArrayOfString>
+  </Value>
+</MySortedDictionaryOfCharListOfString>

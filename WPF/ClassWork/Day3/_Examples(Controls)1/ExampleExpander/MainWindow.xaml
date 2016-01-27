@@ -1,0 +1,62 @@
+﻿<Window x:Class="ExampleExpander.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+       <!--Пример создания Expander-->
+        <Expander x:Name="expTest1" BorderThickness="2" ExpandDirection="Down"  Header="Список ресурсов" BorderBrush="Bisque">
+            <StackPanel>
+                <!--Пример создания элемента на примере StackPanel-->
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="pic/PC.png" Height="20" Width="20" Margin="3"></Image>
+                    <Label>Мой компьтер</Label>
+                </StackPanel>
+                <!--Пример создания элемента на примере MenuItem-->
+                <MenuItem Header="Рабочий стол">
+                    <MenuItem.Icon>
+                        <Image Source="/ExampleExpander;component/pic/Desktop.png" Height="20" Width="20" Margin="3"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--Пример создания элемента на примере MenuItem (картинка из файла ресурсов!)-->
+                <MenuItem Header="Загрузки">
+                    <MenuItem.Icon>
+                        <Image Source="/ExampleExpander;component/Resources/Downloads.png" Height="20" Width="20" Margin="3"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </StackPanel>
+        </Expander>
+
+
+        <Expander x:Name="expTest2"  Grid.Column="1" Grid.Row="1" BorderThickness="2" ExpandDirection="Left" BorderBrush="SkyBlue" IsExpanded="True" Collapsed="Expander_Collapsed" Expanded="expTest2_Expanded">
+            <StackPanel x:Name="spDemoAdd">
+                <!--Пример создания элемента на примере StackPanel-->
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="pic/PC.png" Height="20" Width="20" Margin="3"></Image>
+                    <Label>Мой компьтер</Label>
+                </StackPanel>
+                <!--Пример создания элемента на примере MenuItem-->
+                <MenuItem Header="Рабочий стол">
+                    <MenuItem.Icon>
+                        <Image Source="/ExampleExpander;component/pic/Desktop.png" Height="20" Width="20" Margin="3"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--Пример создания элемента на примере MenuItem (картинка из файла ресурсов!)-->
+                <MenuItem Header="Загрузки">
+                    <MenuItem.Icon>
+                        <Image Source="/ExampleExpander;component/Resources/Downloads.png" Height="20" Width="20" Margin="3"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </StackPanel>
+        </Expander>
+    </Grid>
+</Window>

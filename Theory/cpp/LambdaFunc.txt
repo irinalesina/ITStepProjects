@@ -1,0 +1,21 @@
+Замыкание - позволяет добавить в область видимости функции копии локальных переменных.
+[ variable_name ] () {  } 
+variable_name - будет константой
+&variable_name - не константа
+
+
+Синтаксис:
+int main()
+{
+	int a = 10;
+	[ a ] ( int b ) 
+	{
+		return a * b;
+	} ( 10 )
+}
+[ ] - closure(замыкание)
+( ) - argument list
+{ } - function body
+( ) - call
+ 
+В библеотеке <functional> - все функции сравнения

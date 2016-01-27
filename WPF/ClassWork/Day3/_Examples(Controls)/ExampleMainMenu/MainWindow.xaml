@@ -1,0 +1,91 @@
+﻿<Window x:Class="ExampleMainMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel LastChildFill="False">
+        <Menu DockPanel.Dock="Top">
+            <Menu.Items>
+                <MenuItem x:Name="miFile" Header="Файл">
+                    <MenuItem x:Name="mifOpen" Header="Открыть" Command="Open" Click="mifOpen_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/Menu/openfile.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="mifSave" Header="Сохранить" Command="Save" Click="mifSave_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/Menu/filesave.png"></Image>
+                        </MenuItem.Icon>
+                        <MenuItem Header="Сохранить в .pdf"  ></MenuItem>
+                        <MenuItem Header="Сохранить в .Excel"></MenuItem>
+                        <MenuItem Header="Сохранить в .Word"></MenuItem>
+                    </MenuItem>
+                    <Separator></Separator>
+                    <MenuItem x:Name="mifClose" Header="Закрыть" Command="Close">
+                        <MenuItem.Icon>
+                            <Image Source="Images/Menu/close.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="miView" Header="Вид">
+                    <MenuItem x:Name="mivOpen" Header="Вариант" >
+                        <StackPanel Orientation="Horizontal">
+                           <TextBlock Text="Плитка" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </MenuItem>
+                    <Separator></Separator>
+                    <MenuItem x:Name="mivSave" Header="Сохранять размещение" Height="20" IsCheckable="True"></MenuItem>
+                </MenuItem>
+            </Menu.Items>
+        </Menu>
+
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <ToolBarTray>
+                <ToolBar>
+                <Button Click="mifOpen_Click">
+                    <Image Source="Images/Menu/openfile.png" MaxHeight="15"></Image>
+                </Button>
+                <Button Click="mifSave_Click">
+                    <Image Source="Images/Menu/filesave.png" MaxHeight="15"></Image>
+                </Button>
+                <Separator></Separator>
+               
+                <Separator></Separator>
+                <CheckBox FontWeight="Bold" FontSize="12">Bold</CheckBox>
+                <CheckBox FontStyle="Italic" FontSize="12">Italic</CheckBox>
+                <CheckBox>
+                    <TextBlock TextDecorations="Underline" FontSize="12">Underline</TextBlock>
+                </CheckBox>
+                <Separator></Separator>
+                <ComboBox SelectedIndex="1">
+                    <ComboBoxItem>50%</ComboBoxItem>
+                    <ComboBoxItem>100%</ComboBoxItem>
+                    <ComboBoxItem>150%</ComboBoxItem>
+                </ComboBox>
+            </ToolBar>
+                <ToolBar>
+                    <Button>Цвет фона</Button>
+                    <Button>Цвет шрифта</Button>
+                    <Button>Цвет границы</Button>
+                    <Button>Цвет солнца</Button>
+                </ToolBar>
+                <ToolBar Band="1">
+                    <Button>Плитка</Button>
+                    <Button>Эскизы</Button>
+                    <Button>Таблица</Button>
+                    
+                </ToolBar>
+            </ToolBarTray>
+        </Grid>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock>Загрузка программы</TextBlock>
+            <ProgressBar IsIndeterminate="True" Width="100" Height="10"></ProgressBar>
+            
+        </StatusBar>
+    
+    </DockPanel>
+</Window>

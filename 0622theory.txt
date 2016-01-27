@@ -1,0 +1,21 @@
+class String
+{
+public:
+  String();
+  String(String &orig);
+  const char *Get() const;
+  
+private:
+  unsigned int length;
+  char *characters;
+};
+
+String(): length(0), characters(nullptr) {}
+
+String(String &orig): length(orig.length)
+{ 
+  characters = (char*)malloc(orig.length * sizeof(char));
+  strcpy(characters, orig.characters);
+}
+
+

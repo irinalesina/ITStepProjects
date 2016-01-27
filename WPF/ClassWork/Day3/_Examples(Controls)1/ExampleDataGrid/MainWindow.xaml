@@ -1,0 +1,55 @@
+﻿<Window x:Class="ExampleDataGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label>Демонстрация работы Data Grid</Label>
+
+        <!--Пример работы с элементом DataGrid-->
+        <!--RowBackground  и AlternatingRowBackground (чередующихся строк)  цвета строк -->
+        <!-- ColumnHeaderHeight высота заголовков строк-->
+        <!-- RowHeaderWidth ширина заголовков столбцов-->
+
+        <!--ColumnWidth  ширина столбцов -->
+        <!--RowHeight высота строк -->
+
+        <!--GridLinesVisibility задает тип отображаемых линий (Horizontal, Vertical, All, None)-->
+
+        <!--HeadersVisibility - отображение заголовктв (Column, Row, None, All) -->
+
+        <!--CanUserResizeColumns установка возможности изменять ширину столбцов-->
+
+        <!--CanUserReorderColumns  изменения порядка следования столбцов-->
+        
+        <!--FrozenColumnCount замораживание столбца-->
+
+        <DataGrid x:Name="dgMain" Grid.Row="1" 
+                  RowBackground="Beige"    AlternatingRowBackground="LightGreen"
+                  
+                  ColumnHeaderHeight="20"   RowHeaderWidth="10"
+                  
+                  ColumnWidth="80"  RowHeight="20"
+                 
+                  GridLinesVisibility="All"
+                  
+                  VerticalGridLinesBrush="Red"  HorizontalGridLinesBrush="Black"
+                  
+                  HeadersVisibility="Column"
+                  
+                  CanUserResizeColumns="False"  CanUserReorderColumns="False"
+                  
+                  AutoGenerateColumns ="True" Grid.RowSpan="2"
+                  
+                  LoadingRow="dgMain_LoadingRow"
+                  
+                  FrozenColumnCount="1"
+                  >
+        </DataGrid>
+
+       
+    </Grid>
+</Window>

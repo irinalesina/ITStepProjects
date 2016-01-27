@@ -1,0 +1,46 @@
+﻿<Window x:Class="ExampleListBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="300" Width="500">
+    <Grid>
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+       
+        <ListBox Grid.Row="0"  Margin="5" BorderThickness="2">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="/pic/PC.png" Width="50"></Image>
+                <Label VerticalContentAlignment="Center">Мой компьютер</Label>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="/pic/Network.png" Width="50"></Image>
+                <Label VerticalContentAlignment="Center">Сеть</Label>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="/pic/Desktop.png" Width="50"></Image>
+                <Label VerticalContentAlignment="Center">Рабочий стол</Label>
+            </StackPanel>
+        </ListBox>
+
+        <ComboBox Grid.Row="1" Margin="5" BorderThickness="2">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="/pic/PC.png" Width="50"></Image>
+                <Label VerticalContentAlignment="Center">Мой компьютер</Label>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="/pic/Network.png" Width="50"></Image>
+                <Label VerticalContentAlignment="Center">Сеть</Label>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="/pic/Desktop.png" Width="50"></Image>
+                <Label VerticalContentAlignment="Center">Рабочий стол</Label>
+            </StackPanel>
+        </ComboBox>
+
+        
+
+    </Grid>
+</Window>

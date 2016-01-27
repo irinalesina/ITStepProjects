@@ -1,0 +1,48 @@
+Theory:
+eXtensible
+Markup
+Language
+w3schools.com
+
+-----------------------------
+<!--task1-->
+<?xml version="1.0"?>
+	<корневой_узел>
+		...
+		дочерние узлы
+		...
+	</корневой_узел>
+	<node>
+	<img src="1.png"/>
+-----------------------------
+
+Кодировка документа:
+1. Latin-1(1252) - используется по умолчанию
+2. utf-8
+
+<?xml version="1.0" encoding="utf-8"?>
+
+
+Описание документа XML:
+* DTD - Document Type Declaration
+* XML Schema
+
+
+Работа с XML- документами:
+Parser
+DOM - Document Object Model(строит объектную модель документа)
+
+Аттрибуты/методы:
+* getElementsByTagName("cell") - вернет список всех тегов, как объектов, а не строк
+* Children - выдает список всех детей обекта(только первых)
+* Attributes
+* Name(имя тега)
+* Value(содержимое тега)
+
+<cell>Hi</cell>
+  |   |
+Name  |
+    Value    
+
+
+HTML != XML
