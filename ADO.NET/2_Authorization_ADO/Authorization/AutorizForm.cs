@@ -73,7 +73,7 @@ namespace Authorization
         private void linkReg_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegistrForm frmReg = new RegistrForm();
-            frmReg.ShowDialog();
+            frmReg.Show();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace Authorization
             {
                 if(DBConnector.CheckUser(tbName.Text, tbPassword.Text))
                 {
-                    this.Hide();
+                    //this.Hide();
                     MainForm mainForm = new MainForm();
                     mainForm.Show();
                 }

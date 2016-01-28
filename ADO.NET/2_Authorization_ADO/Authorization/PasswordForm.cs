@@ -21,7 +21,24 @@ namespace Authorization
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-           
+           if(this.IsValid())
+           {
+               if(DBConnector.UpdatePassword(tbNewPas.Text, tbEmail.Text))
+               {
+                   MessageBox.Show("Password is changed!");
+               }
+               else
+                   MessageBox.Show("Password is not changed! Try again!");
+           }
+           else
+               MessageBox.Show("Data is not valid!");
+        }
+
+        public bool IsValid()
+        {
+            if (tbEmail.Text == "" || tbNewPas.Text == "" || tbNewPas.Text.Length < 6 || tbNewPas.Text != tbNewPas2.Text)
+                return false;
+            return true;
         }
     }
 }
