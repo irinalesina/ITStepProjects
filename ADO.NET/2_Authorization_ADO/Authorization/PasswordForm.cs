@@ -26,6 +26,7 @@ namespace Authorization
                if(DBConnector.UpdatePassword(tbNewPas.Text, tbEmail.Text))
                {
                    MessageBox.Show("Password is changed!");
+                   this.Close();
                }
                else
                    MessageBox.Show("Password is not changed! Try again!");

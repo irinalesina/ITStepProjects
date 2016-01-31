@@ -16,7 +16,7 @@ namespace Authorization
         static DBConnector()
         {
             connection = new SqlConnection();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultCon"].ConnectionString;                
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;                
         }
 
         // sql stored procedure

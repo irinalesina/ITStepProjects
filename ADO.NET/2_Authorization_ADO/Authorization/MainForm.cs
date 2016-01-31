@@ -12,9 +12,15 @@ namespace Authorization
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private Form parent;
+        public MainForm(Form parent)
         {
             InitializeComponent();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parent.Show();
         }
     }
 }

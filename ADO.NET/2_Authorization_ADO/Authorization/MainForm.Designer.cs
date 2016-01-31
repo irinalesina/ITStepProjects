@@ -86,6 +86,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.Text = "Главное окно приложения";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

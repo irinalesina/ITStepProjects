@@ -299,6 +299,7 @@
             this.Name = "RegistrForm";
             this.ShowInTaskbar = false;
             this.Text = "Регистрация нового пользователя";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistrForm_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

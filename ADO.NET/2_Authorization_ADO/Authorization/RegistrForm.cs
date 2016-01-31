@@ -12,10 +12,11 @@ namespace Authorization
 {
     public partial class RegistrForm : Form
     {
-
+        private Form parent;
      
-        public RegistrForm()
+        public RegistrForm(Form parent)
         {
+            this.parent = parent;
             InitializeComponent();
          
         }
@@ -33,9 +34,9 @@ namespace Authorization
                     if (DBConnector.AddUser(tbLogin.Text, tbPas.Text, tbEmail.Text, tbName.Text, tbSurName.Text))
                     {
                         MessageBox.Show("New user created!");
-                        MainForm mf = new MainForm();
+                        MainForm mf = new MainForm(this);
                         mf.Show();
-                        //this.Hide();
+                        this.Hide();
                     }
                     else
                     {
@@ -59,6 +60,11 @@ namespace Authorization
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void RegistrForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parent.Show();
         }
     }
 }
