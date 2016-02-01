@@ -13,9 +13,10 @@ namespace Authorization
 {
     public partial class PasswordForm : Form
     {
-      
-        public PasswordForm()
+        private Form parent;
+        public PasswordForm(Form parent)
         {
+            this.parent = parent;
             InitializeComponent();
         }
 
@@ -27,6 +28,7 @@ namespace Authorization
                {
                    MessageBox.Show("Password is changed!");
                    this.Close();
+                   parent.Show();
                }
                else
                    MessageBox.Show("Password is not changed! Try again!");
@@ -40,6 +42,11 @@ namespace Authorization
             if (tbEmail.Text == "" || tbNewPas.Text == "" || tbNewPas.Text.Length < 6 || tbNewPas.Text != tbNewPas2.Text)
                 return false;
             return true;
+        }
+
+        private void PasswordForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parent.Show();
         }
     }
 }

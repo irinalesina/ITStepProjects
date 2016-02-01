@@ -15,6 +15,7 @@ namespace Authorization
         private Form parent;
         public MainForm(Form parent)
         {
+            this.parent = parent;
             InitializeComponent();
         }
 

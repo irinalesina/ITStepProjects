@@ -161,6 +161,7 @@
             this.Name = "PasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Восстановление пароля";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswordForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

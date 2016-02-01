@@ -66,7 +66,8 @@ namespace Authorization
 
         private void linkPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PasswordForm frmPass = new PasswordForm();
+            this.Hide();
+            PasswordForm frmPass = new PasswordForm(this);
             frmPass.ShowDialog();
         }
 
