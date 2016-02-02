@@ -26,14 +26,14 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="TextBlock.FontSize" Value="20"></Setter>
                                 <Setter TargetName="Bd" Property="BorderThickness" Value="1"></Setter>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="Gray"></Setter>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="CadetBlue"></Setter>
                             </Trigger>
                             <!--При выборе-->
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+                                <Setter Property="TextBlock.Foreground" Value="Black"></Setter>
                                 <Setter Property="TextBlock.FontSize" Value="20"></Setter>
                                 <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
-                                <Setter TargetName="Bd" Property="Background" Value="Gray"></Setter>
+                                <Setter TargetName="Bd" Property="Background" Value="CadetBlue"></Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -45,7 +45,7 @@
             <Grid x:Name="LBItem">
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -54,8 +54,8 @@
 
                     <Image x:Name="IPhoto" Grid.Column="0" Grid.Row="0" Source="{Binding Path=Photo}"/>
                     <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="0, 10, 0, 0">
-                        <TextBlock x:Name="TBFirstName" Grid.Column="0" Grid.Row="0" Text="{Binding Path=FirstName}"/>
-                        <TextBlock x:Name="TBLastName" Grid.Column="0" Grid.Row="1"  Text="{Binding Path=LastName}"/>
+                        <TextBlock x:Name="TBFirstName" Grid.Column="0" Grid.Row="0" FontSize="18" Text="{Binding Path=FirstName}"/>
+                        <TextBlock x:Name="TBLastName" Grid.Column="0" Grid.Row="1" FontSize="18" Text="{Binding Path=LastName}"/>
                     </StackPanel>
                 </Grid>
                 <TextBlock ToolTip="{Binding Converter={StaticResource ConverEmployeeToAllInfo}}"/>
@@ -129,7 +129,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="#FF112736">
-                    <ListBox x:Name="lbEmployees" Grid.Column="0" Grid.Row="0" Width="500" ItemTemplate="{StaticResource ViewEmployee}"
+                    <ListBox x:Name="lbEmployees" Grid.Column="0" Grid.Row="0" Width="700" ItemTemplate="{StaticResource ViewEmployee}"
                         HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" 
                          Background="#FF73B8B4" />
                     <!--ItemsSource="{Binding ElementName=mainWindow, Path=customers}"-->
@@ -143,7 +143,6 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="#FF112736">
-                    <Image Name="testImg" HorizontalAlignment="Left" Height="221" VerticalAlignment="Top" Width="328"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Client in city">

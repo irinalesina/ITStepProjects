@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace _3_AsincMode
 {
@@ -14,6 +14,6 @@ namespace _3_AsincMode
         public string Birthday { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public Image Photo { get; set; }
+        public ImageSource Photo { get; set; }
     }
 }
