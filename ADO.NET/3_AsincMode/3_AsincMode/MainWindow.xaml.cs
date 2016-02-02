@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,12 +25,12 @@ namespace _3_AsincMode
     public partial class MainWindow : Window
     {
         SqlConnection connection;
-        public static List<Customer> customers = new List<Customer>();
+        List<Employee> employees;
         public MainWindow()
         {
             connection = new SqlConnection();
             connection.ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
-
+            employees = new List<Employee>();
             InitializeComponent();
         }
 
@@ -59,16 +60,80 @@ namespace _3_AsincMode
                     orders.Add(order);
                 }
                 dgClientsOrders.ItemsSource = orders;
-                pbProgress.IsIndeterminate = false;
+                
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 connection.Close();
+                pbProgress.IsIndeterminate = false;
             }
         }
+
+        async private void btnEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                pbProgress.IsIndeterminate = true;
+                await connection.OpenAsync();
+
+                SqlCommand cmdSelect = connection.CreateCommand();
+                cmdSelect.CommandText = "SELECT TOP 50 FirstName, LastName, BirthDate, Address, HomePhone, Photo FROM Employees";
+
+                SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    MemoryStream stream = new MemoryStream((byte[])reader[5]);
+
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.StreamSource = stream;
+                    image.EndInit();//exception here!!!
+                    //controImg.Source = LoadImage((byte[])reader[5]);
+                    testImg.Source = (ImageSource)image;
+
+                    Employee employee = new Employee() { FirstName=reader[0].ToString(), LastName=reader[1].ToString(),
+                                                         Birthday = reader[2].ToString(),
+                                                         Address = reader[3].ToString(),
+                                                         Phone = reader[4].ToString()
+                    };
+                    employees.Add(employee);
+                }
+                lbEmployees.ItemsSource = employees;
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+                pbProgress.IsIndeterminate = false;
+            }
+        }
+
+        //private static BitmapImage LoadImage(byte[] imageData)
+        //{
+        //    if (imageData == null || imageData.Length == 0) return null;
+        //    var image = new BitmapImage();
+        //    using (var mem = new MemoryStream(imageData))
+        //    {
+        //        mem.Position = 0;
+        //        image.BeginInit();
+        //        image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+        //        image.CacheOption = BitmapCacheOption.OnLoad;
+        //        image.UriSource = null;
+        //        image.StreamSource = mem;
+        //        image.EndInit();
+        //    }
+        //    image.Freeze();
+        //    return image;
+        //}
     }
 }
