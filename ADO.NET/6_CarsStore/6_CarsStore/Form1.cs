@@ -41,7 +41,7 @@ namespace _6_CarsStore
             SqlConnection connection = new SqlConnection();
             try
             {
-                connection.ConnectionString = @"Data Source=(localdb)\v11.0;AttachDbFilename=D:\ITStepProjects\ADO.NET\6_CarsStore\6_CarsStore\DBAuto.mdf;Integrated Security=True";
+                connection.ConnectionString = @"Data Source=(localdb)\v11.0;AttachDbFilename=D:\programming\cours\ITStepProjects\ADO.NET\6_CarsStore\6_CarsStore\DBAuto.mdf;Integrated Security=True";
                 await connection.OpenAsync();
 
                 SqlCommand cmdSelect = connection.CreateCommand();
