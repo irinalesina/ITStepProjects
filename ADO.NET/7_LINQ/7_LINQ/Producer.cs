@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,16 @@ namespace _7_LINQ
 {
     public class PRODUCER
     {
-        public int Id { get; set; }
+        [DisplayName("ID")]
+        public int ID { get; set; }
+
+        [DisplayName("Имя")]
         public string NAME { get; set; }
+
+        [DisplayName("Дата получения прибыли")]
         public DateTime DATE { get; set; }
+
+        [DisplayName("Прибыль")]
         public int FEE { get; set; }
 
         public PRODUCER() { }

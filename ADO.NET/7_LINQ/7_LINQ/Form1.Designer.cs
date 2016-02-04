@@ -41,6 +41,14 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.artistAfterCCCPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.counrtiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aldomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titlesPriceForCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.companyTitleCountGroupByYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.producerAndTitleWithMaxFeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.producerGotFeeLastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titleWithMinPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allInfoAboutTitlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCDs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
@@ -50,6 +58,9 @@
             // 
             // dataGridViewCDs
             // 
+            this.dataGridViewCDs.AllowUserToOrderColumns = true;
+            this.dataGridViewCDs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCDs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCDs.Location = new System.Drawing.Point(12, 74);
             this.dataGridViewCDs.Name = "dataGridViewCDs";
@@ -76,6 +87,9 @@
             // 
             // dataGridViewProducers
             // 
+            this.dataGridViewProducers.AllowUserToOrderColumns = true;
+            this.dataGridViewProducers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewProducers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProducers.Location = new System.Drawing.Point(12, 284);
             this.dataGridViewProducers.Name = "dataGridViewProducers";
@@ -84,6 +98,10 @@
             // 
             // dataGridViewResult
             // 
+            this.dataGridViewResult.AllowUserToOrderColumns = true;
+            this.dataGridViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResult.Location = new System.Drawing.Point(12, 496);
             this.dataGridViewResult.Name = "dataGridViewResult";
@@ -127,24 +145,87 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.artistAfterCCCPToolStripMenuItem,
-            this.counrtiesToolStripMenuItem});
+            this.counrtiesToolStripMenuItem,
+            this.aldomsToolStripMenuItem,
+            this.titlesPriceForCountryToolStripMenuItem,
+            this.companyTitleCountGroupByYearToolStripMenuItem,
+            this.producerAndTitleWithMaxFeeToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.producerGotFeeLastToolStripMenuItem,
+            this.titleWithMinPriceToolStripMenuItem,
+            this.allInfoAboutTitlesToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.OwnerItem = this.queryToolStripMenuItem;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(293, 224);
             // 
             // artistAfterCCCPToolStripMenuItem
             // 
             this.artistAfterCCCPToolStripMenuItem.Name = "artistAfterCCCPToolStripMenuItem";
-            this.artistAfterCCCPToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.artistAfterCCCPToolStripMenuItem.Text = "ArtistAfterCCCP";
+            this.artistAfterCCCPToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.artistAfterCCCPToolStripMenuItem.Text = "1. ArtistAfterCCCP";
             this.artistAfterCCCPToolStripMenuItem.Click += new System.EventHandler(this.artistAfterCCCPToolStripMenuItem_Click);
             // 
             // counrtiesToolStripMenuItem
             // 
             this.counrtiesToolStripMenuItem.Name = "counrtiesToolStripMenuItem";
-            this.counrtiesToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.counrtiesToolStripMenuItem.Text = "Counrties";
+            this.counrtiesToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.counrtiesToolStripMenuItem.Text = "2. Counrties";
             this.counrtiesToolStripMenuItem.Click += new System.EventHandler(this.counrtiesToolStripMenuItem_Click);
+            // 
+            // aldomsToolStripMenuItem
+            // 
+            this.aldomsToolStripMenuItem.Name = "aldomsToolStripMenuItem";
+            this.aldomsToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.aldomsToolStripMenuItem.Text = "3. TitlesOrderByYear";
+            this.aldomsToolStripMenuItem.Click += new System.EventHandler(this.aldomsToolStripMenuItem_Click);
+            // 
+            // titlesPriceForCountryToolStripMenuItem
+            // 
+            this.titlesPriceForCountryToolStripMenuItem.Name = "titlesPriceForCountryToolStripMenuItem";
+            this.titlesPriceForCountryToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.titlesPriceForCountryToolStripMenuItem.Text = "4. TitlesPriceForCountry";
+            this.titlesPriceForCountryToolStripMenuItem.Click += new System.EventHandler(this.titlesPriceForCountryToolStripMenuItem_Click);
+            // 
+            // companyTitleCountGroupByYearToolStripMenuItem
+            // 
+            this.companyTitleCountGroupByYearToolStripMenuItem.Name = "companyTitleCountGroupByYearToolStripMenuItem";
+            this.companyTitleCountGroupByYearToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.companyTitleCountGroupByYearToolStripMenuItem.Text = "5. CompanyTitleCountGroupByYear";
+            this.companyTitleCountGroupByYearToolStripMenuItem.Click += new System.EventHandler(this.companyTitleCountGroupByYearToolStripMenuItem_Click);
+            // 
+            // producerAndTitleWithMaxFeeToolStripMenuItem
+            // 
+            this.producerAndTitleWithMaxFeeToolStripMenuItem.Name = "producerAndTitleWithMaxFeeToolStripMenuItem";
+            this.producerAndTitleWithMaxFeeToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.producerAndTitleWithMaxFeeToolStripMenuItem.Text = "6. ProducerAndTitlesWithMaxFee";
+            this.producerAndTitleWithMaxFeeToolStripMenuItem.Click += new System.EventHandler(this.producerAndTitleWithMaxFeeToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(292, 22);
+            this.toolStripMenuItem2.Text = "7. TitleCountsEchProdBetween1988-1990 ";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // producerGotFeeLastToolStripMenuItem
+            // 
+            this.producerGotFeeLastToolStripMenuItem.Name = "producerGotFeeLastToolStripMenuItem";
+            this.producerGotFeeLastToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.producerGotFeeLastToolStripMenuItem.Text = "8. ProducerGotFeeLast";
+            this.producerGotFeeLastToolStripMenuItem.Click += new System.EventHandler(this.producerGotFeeLastToolStripMenuItem_Click);
+            // 
+            // titleWithMinPriceToolStripMenuItem
+            // 
+            this.titleWithMinPriceToolStripMenuItem.Name = "titleWithMinPriceToolStripMenuItem";
+            this.titleWithMinPriceToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.titleWithMinPriceToolStripMenuItem.Text = "9. TitleWithMinPrice";
+            this.titleWithMinPriceToolStripMenuItem.Click += new System.EventHandler(this.titleWithMinPriceToolStripMenuItem_Click);
+            // 
+            // allInfoAboutTitlesToolStripMenuItem
+            // 
+            this.allInfoAboutTitlesToolStripMenuItem.Name = "allInfoAboutTitlesToolStripMenuItem";
+            this.allInfoAboutTitlesToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.allInfoAboutTitlesToolStripMenuItem.Text = "10. AllInfoAboutTitles";
+            this.allInfoAboutTitlesToolStripMenuItem.Click += new System.EventHandler(this.allInfoAboutTitlesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -186,6 +267,14 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem artistAfterCCCPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem counrtiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aldomsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem titlesPriceForCountryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem companyTitleCountGroupByYearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem producerAndTitleWithMaxFeeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem producerGotFeeLastToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem titleWithMinPriceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allInfoAboutTitlesToolStripMenuItem;
     }
 }
 
