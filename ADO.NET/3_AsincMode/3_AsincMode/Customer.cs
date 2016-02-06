@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _3_AsincMode
 {
-    class Customer
+    public class Customer
     {
         public string CompanyName { get; set; }
         public string ContactName { get; set; }

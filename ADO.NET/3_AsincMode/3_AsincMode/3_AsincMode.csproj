@@ -63,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClientsInCity.cs" />
+    <Compile Include="ClientsOrdersSumm.cs" />
     <Compile Include="ConverEmployeeToAllInfo.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
@@ -74,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Order.cs" />
     <Compile Include="OrderInfo.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,7 +101,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

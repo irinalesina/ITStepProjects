@@ -83,11 +83,11 @@
         <Button Name="btnEmployees" Content="Employees" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" 
                 Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA" Click="btnEmployees_Click"/>
         <Button Name="btnProducts" Content="Products" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" 
-                Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="2" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA"/>
+                Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="2" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA" Click="btnProducts_Click"/>
         <Button Name="btnClientsInCity" Content="Clients in city" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" 
-                Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="3" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA"/>
+                Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="3" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA" Click="btnClientsInCity_Click"/>
         <Button Name="btnClientsInfo" Content="Clients info" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" 
-                Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="4" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA"/>
+                Foreground="Black" FontSize="26" FontWeight="Bold" FontFamily="Microsoft Uighur" Grid.Column="4" Grid.Row="0" Margin="5,5,5,5" Background="#FF84BFDA" Click="btnClientsInfo_Click"/>
         <TabControl Name="tcInfo" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="5" Grid.Row="1" Background="#FF112736">
             <TabItem Header="Clients orders">
                 <TabItem.Background>
@@ -143,6 +143,15 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="#FF112736">
+                    <DataGrid Name="dgProducts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF112736" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ProductName" Width="50*" Binding="{Binding ProductName}"/>
+                            <DataGridTextColumn Header="UnitPrice" Width="50*" Binding="{Binding UnitPrice}"/>
+                            <DataGridTextColumn Header="Discontinued" Width="50*" Binding="{Binding Discontinued}"/>
+                            <DataGridTextColumn Header="QuantityPerUnit" Width="50*" Binding="{Binding QuantityPerUnit}"/>
+                            <DataGridTextColumn Header="CategoryName" Width="50*" Binding="{Binding CategoryName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Client in city">
@@ -152,7 +161,14 @@
                         <GradientStop Color="#FF112736" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid Background="#FF112736"/>
+                <Grid Background="#FF112736">
+                    <DataGrid Name="dgClientsInCity" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF112736" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ProductName" Width="50*" Binding="{Binding City}"/>
+                            <DataGridTextColumn Header="UnitPrice" Width="50*" Binding="{Binding ClientsCount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem Header="Clients info">
                 <TabItem.Background>
@@ -161,7 +177,32 @@
                         <GradientStop Color="#FF112736" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid Background="#FF112736"/>
+                <Grid Background="#FF112736">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="111*"/>
+                        <ColumnDefinition Width="275*"/>
+                        <ColumnDefinition Width="111*"/>
+                        <ColumnDefinition Width="324*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="295*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgClientsOrdersSumm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF112736" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="4">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ContactName" Width="50*" Binding="{Binding customer.ContactName}"/>
+                            <DataGridTextColumn Header="CompanyName" Width="50*" Binding="{Binding customer.CompanyName}"/>
+                            <DataGridTextColumn Header="City" Width="50*" Binding="{Binding customer.City}"/>
+                            <DataGridTextColumn Header="Country" Width="50*" Binding="{Binding customer.Country}"/>
+                            <DataGridTextColumn Header="OrdersSumm" Width="50*" Binding="{Binding Summ}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Data from:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold" Background="#FF4390B4" Grid.Column="0" Grid.Row="0"/>
+                    <Label Content="Data to:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold" Background="#FF4390B4" Grid.Column="2" Grid.Row="0"/>
+                    <DatePicker Name="dpFrom" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,5,20,5" VerticalAlignment="Stretch"/>
+                    <DatePicker Name="dpTo" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,5,20,5" VerticalAlignment="Stretch"/>
+                </Grid>
+                
             </TabItem>
         </TabControl>
         <ProgressBar Name="pbProgress" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" Background="#FF3A3A3A" >

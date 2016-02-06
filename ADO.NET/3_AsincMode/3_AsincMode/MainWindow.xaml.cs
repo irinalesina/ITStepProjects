@@ -5,8 +5,6 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,11 +24,19 @@ namespace _3_AsincMode
     {
         SqlConnection connection;
         List<Employee> employees;
+        List<Product> products;
+        List<ClientsInCity> customersInCity;
+        List<ClientsOrdersSumm> clientsSumm;
+
         public MainWindow()
         {
             connection = new SqlConnection();
             connection.ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             employees = new List<Employee>();
+            products = new List<Product>();
+            customersInCity = new List<ClientsInCity>();
+            clientsSumm = new List<ClientsOrdersSumm>();
+
             InitializeComponent();
         }
 
@@ -81,7 +87,7 @@ namespace _3_AsincMode
                 await connection.OpenAsync();
 
                 SqlCommand cmdSelect = connection.CreateCommand();
-                cmdSelect.CommandText = "SELECT TOP 50 FirstName, LastName, BirthDate, Address, HomePhone, Photo FROM Employees";
+                cmdSelect.CommandText = "SELECT FirstName, LastName, BirthDate, Address, HomePhone, Photo FROM Employees";
 
                 SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
 
@@ -126,6 +132,125 @@ namespace _3_AsincMode
             bi.StreamSource = ms;
             bi.EndInit();
             return bi;
+        }
+
+        async private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                pbProgress.IsIndeterminate = true;
+                await connection.OpenAsync();
+
+                SqlCommand cmdSelect = connection.CreateCommand();
+                cmdSelect.CommandText = "SELECT ProductName, UnitPrice, Discontinued, QuantityPerUnit, CategoryName "+ 
+                "FROM Products INNER JOIN Categories ON Products.CategoryID=Categories.CategoryID";
+
+                SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    Product prod = new Product()
+                    {
+                        ProductName = reader[0].ToString(),
+                        UnitPrice = reader[1].ToString(),
+                        Discontinued = reader[2].ToString(),
+                        QuantityPerUnit = reader[3].ToString(),
+                        CategoryName = reader[4].ToString()
+                    };
+                    products.Add(prod);
+                }
+                dgProducts.ItemsSource = products;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+                pbProgress.IsIndeterminate = false;
+            }
+        }
+
+        async private void btnClientsInCity_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                pbProgress.IsIndeterminate = true;
+                await connection.OpenAsync();
+
+                SqlCommand cmdSelect = connection.CreateCommand();
+                cmdSelect.CommandText = "SELECT City, COUNT(*) FROM Customers GROUP BY City";
+
+                SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    ClientsInCity c = new ClientsInCity()
+                    {
+                        City = reader[0].ToString(),
+                        ClientsCount = reader[1].ToString()
+                    };
+                    customersInCity.Add(c);
+                }
+                dgClientsInCity.ItemsSource = customersInCity;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+                pbProgress.IsIndeterminate = false;
+            }
+        }
+
+        async private void btnClientsInfo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                pbProgress.IsIndeterminate = true;
+                await connection.OpenAsync();
+
+                SqlCommand cmdSelect = connection.CreateCommand();
+                cmdSelect.CommandText = "SELECT Customers.ContactName, Customers.CompanyName, Customers.City, Customers.Country, Groups.OrdersSum "+
+                    "FROM Customers INNER JOIN (SELECT CustomerID, SUM([Order Details].UnitPrice*(1+Discount)*Quantity) as OrdersSum "+
+                    "FROM Orders INNER JOIN [Order Details] ON Orders.OrderID=[Order Details].OrderID GROUP BY CustomerID) as Groups "+
+                    " ON Customers.CustomerID=Groups.CustomerID";
+
+                SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    Customer cust = new Customer()
+                    {
+                        ContactName = reader[0].ToString(),
+                        CompanyName = reader[1].ToString(),
+                        City = reader[2].ToString(),
+                        Country = reader[3].ToString()
+                    };
+                    ClientsOrdersSumm cos = new ClientsOrdersSumm() 
+                    {
+                        customer = cust,
+                        Summ = reader[4].ToString()
+                    };
+                    clientsSumm.Add(cos);
+                }
+                dgClientsOrdersSumm.ItemsSource = clientsSumm;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+                pbProgress.IsIndeterminate = false;
+            }
         }
     }
 }
