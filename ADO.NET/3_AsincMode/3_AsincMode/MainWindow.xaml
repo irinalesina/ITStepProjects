@@ -12,7 +12,8 @@
 
     <Window.Resources>
         <local:ConverEmployeeToAllInfo x:Key="ConverEmployeeToAllInfo"/>
-
+        <local:ConvertDecimal x:Key="ConvertDecimal"/>
+        
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -199,8 +200,10 @@
                     </DataGrid>
                     <Label Content="Data from:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold" Background="#FF4390B4" Grid.Column="0" Grid.Row="0"/>
                     <Label Content="Data to:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold" Background="#FF4390B4" Grid.Column="2" Grid.Row="0"/>
-                    <DatePicker Name="dpFrom" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,5,20,5" VerticalAlignment="Stretch"/>
-                    <DatePicker Name="dpTo" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,5,20,5" VerticalAlignment="Stretch"/>
+                    <DatePicker Name="dpFrom" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,5,20,5" VerticalAlignment="Stretch" 
+                                SelectedDate="01/01/1996"/>
+                    <DatePicker Name="dpTo" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" Margin="20,5,20,5" VerticalAlignment="Stretch"
+                                SelectedDate="01/01/1999"/>
                 </Grid>
                 
             </TabItem>

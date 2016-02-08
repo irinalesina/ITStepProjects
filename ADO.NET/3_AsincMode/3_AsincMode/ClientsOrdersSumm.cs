@@ -9,6 +9,7 @@ namespace _3_AsincMode
     public class ClientsOrdersSumm
     {
         public Customer customer { get; set; }
-        public string Summ { get; set; }
+        [Obsolete]
+        public decimal Summ { get; set; }
     }
 }

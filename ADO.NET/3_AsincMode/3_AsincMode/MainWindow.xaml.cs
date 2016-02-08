@@ -23,19 +23,11 @@ namespace _3_AsincMode
     public partial class MainWindow : Window
     {
         SqlConnection connection;
-        List<Employee> employees;
-        List<Product> products;
-        List<ClientsInCity> customersInCity;
-        List<ClientsOrdersSumm> clientsSumm;
 
         public MainWindow()
         {
             connection = new SqlConnection();
             connection.ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
-            employees = new List<Employee>();
-            products = new List<Product>();
-            customersInCity = new List<ClientsInCity>();
-            clientsSumm = new List<ClientsOrdersSumm>();
 
             InitializeComponent();
         }
@@ -90,7 +82,7 @@ namespace _3_AsincMode
                 cmdSelect.CommandText = "SELECT FirstName, LastName, BirthDate, Address, HomePhone, Photo FROM Employees";
 
                 SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
-
+                List<Employee> employees = new List<Employee>();
                 while (await reader.ReadAsync())
                 {
                     Employee employee = new Employee() { FirstName=reader[0].ToString(), LastName=reader[1].ToString(),
@@ -146,7 +138,7 @@ namespace _3_AsincMode
                 "FROM Products INNER JOIN Categories ON Products.CategoryID=Categories.CategoryID";
 
                 SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
-
+                List<Product> products = new List<Product>();
                 while (await reader.ReadAsync())
                 {
                     Product prod = new Product()
@@ -184,7 +176,7 @@ namespace _3_AsincMode
                 cmdSelect.CommandText = "SELECT City, COUNT(*) FROM Customers GROUP BY City";
 
                 SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
-
+                List<ClientsInCity> customersInCity = new List<ClientsInCity>();
                 while (await reader.ReadAsync())
                 {
                     ClientsInCity c = new ClientsInCity()
@@ -218,11 +210,14 @@ namespace _3_AsincMode
                 SqlCommand cmdSelect = connection.CreateCommand();
                 cmdSelect.CommandText = "SELECT Customers.ContactName, Customers.CompanyName, Customers.City, Customers.Country, Groups.OrdersSum "+
                     "FROM Customers INNER JOIN (SELECT CustomerID, SUM([Order Details].UnitPrice*(1+Discount)*Quantity) as OrdersSum "+
-                    "FROM Orders INNER JOIN [Order Details] ON Orders.OrderID=[Order Details].OrderID GROUP BY CustomerID) as Groups "+
-                    " ON Customers.CustomerID=Groups.CustomerID";
+                    "FROM Orders INNER JOIN [Order Details] ON Orders.OrderID=[Order Details].OrderID WHERE Orders.OrderDate BETWEEN @from AND @to "+
+                    "GROUP BY CustomerID) as Groups ON Customers.CustomerID=Groups.CustomerID";
+                string dt = dpFrom.DisplayDate.ToString("dd-MM-yyyy");
+                cmdSelect.Parameters.AddWithValue("@from", dpFrom.DisplayDate.ToString("dd/MM/yyyy"));
+                cmdSelect.Parameters.AddWithValue("@to", dpTo.DisplayDate.ToString("dd/MM/yyyy"));
 
                 SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
-
+                List<ClientsOrdersSumm> clientsSumm = new List<ClientsOrdersSumm>();
                 while (await reader.ReadAsync())
                 {
                     Customer cust = new Customer()
@@ -235,7 +230,7 @@ namespace _3_AsincMode
                     ClientsOrdersSumm cos = new ClientsOrdersSumm() 
                     {
                         customer = cust,
-                        Summ = reader[4].ToString()
+                        Summ = Convert.ToDecimal(String.Format("{0:0.##}", reader[4]))
                     };
                     clientsSumm.Add(cos);
                 }
@@ -252,5 +247,6 @@ namespace _3_AsincMode
                 pbProgress.IsIndeterminate = false;
             }
         }
+
     }
 }

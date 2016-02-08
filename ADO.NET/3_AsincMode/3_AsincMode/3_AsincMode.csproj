@@ -66,6 +66,7 @@
     <Compile Include="ClientsInCity.cs" />
     <Compile Include="ClientsOrdersSumm.cs" />
     <Compile Include="ConverEmployeeToAllInfo.cs" />
+    <Compile Include="ConvertDecimal.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="MainWindow.xaml.cs">
