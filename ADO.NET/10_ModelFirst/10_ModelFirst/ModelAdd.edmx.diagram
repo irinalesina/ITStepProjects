@@ -5,11 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="379884e44f68461e9696852d9b597414" Name="Diagram1" >
-        <EntityTypeShape EntityType="ModelAdd.Person" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="ModelAdd.Student" Width="1.5" PointX="3.75" PointY="0.625" />
-        <EntityTypeShape EntityType="ModelAdd.Instructor" Width="1.5" PointX="6.75" PointY="0.625" />
-        <EntityTypeShape EntityType="ModelAdd.OfficeAssignment" Width="1.5" PointX="0.5" PointY="3.125" />
-        <EntityTypeShape EntityType="ModelAdd.Enrollment" Width="1.5" PointX="3.875" PointY="4.5" />
+        <EntityTypeShape EntityType="ModelAdd.Person" Width="1.5" PointX="2.75" PointY="0.5" />
+        <EntityTypeShape EntityType="ModelAdd.Student" Width="1.5" PointX="2" PointY="2.75" />
+        <EntityTypeShape EntityType="ModelAdd.Instructor" Width="1.5" PointX="4.25" PointY="2.75" />
+        <EntityTypeShape EntityType="ModelAdd.OfficeAssignment" Width="1.5" PointX="5.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ModelAdd.Enrollment" Width="1.5" PointX="0.5" PointY="4.75" />
+        <EntityTypeShape EntityType="ModelAdd.Course" Width="1.5" PointX="3.625" PointY="5.375" />
+        <EntityTypeShape EntityType="ModelAdd.Department" Width="1.5" PointX="6.75" PointY="4.75" />
+        <AssociationConnector Association="ModelAdd.OfficeAssignmentInstructor" />
+        <InheritanceConnector EntityType="ModelAdd.Instructor" />
+        <AssociationConnector Association="ModelAdd.EnrollmentStudent" />
+        <AssociationConnector Association="ModelAdd.EnrollmentCourse" />
+        <AssociationConnector Association="ModelAdd.CourseInstructor" />
+        <AssociationConnector Association="ModelAdd.CourseDepartment" />
+        <AssociationConnector Association="ModelAdd.DepartmentInstructor" />
+        <InheritanceConnector EntityType="ModelAdd.Student" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
