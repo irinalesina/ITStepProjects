@@ -11,6 +11,6 @@ namespace _11_CodeFirst_Example
         public int Id { get; set; }
         public string Name { get; set; }
         public double Fuel { get; set; }
-        public CarInfo CarInfo { get; set; }
+        public virtual CarInfo CarInfo { get; set; }
     }
 }

@@ -12,6 +12,6 @@ namespace _11_CodeFirst_Example
         [ForeignKey("Car")]
         public int Id { get; set; }
         public string Color { get; set; }
-        public Car Car { get; set; }
+        public virtual Car Car { get; set; }
     }
 }

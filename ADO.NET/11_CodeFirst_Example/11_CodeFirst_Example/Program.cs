@@ -11,6 +11,9 @@ namespace _11_CodeFirst_Example
     {
         static void Main(string[] args)
         {
+
+            
+
             Context db = new Context(ConfigurationManager.ConnectionStrings["ConnectionStringCarsList"].ConnectionString);
 
             //Car car = new Car() { Name = "BMW", Fuel = 50, CarInfo = new CarInfo() { Color="Blue" } };
@@ -19,7 +22,7 @@ namespace _11_CodeFirst_Example
 
             //db.SaveChanges();
           
-            foreach(var c in db.Cars)
+            foreach(var c in db.Cars.ToList())
             {
                 Console.WriteLine("{0} {1}: {2}", c.CarInfo.Color, c.Name, c.Fuel);
             }
