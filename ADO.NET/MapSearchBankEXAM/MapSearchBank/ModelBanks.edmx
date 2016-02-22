@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BanksSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Сoordinate_x" Type="real" Nullable="false" />
+          <Property Name="Сoordinate_y" Type="real" Nullable="false" />
+          <Property Name="Bank" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeprtmentsСurrencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="int" Nullable="false" />
+          <Property Name="Department" Type="int" Nullable="false" />
+          <Property Name="Buy" Type="money" Nullable="false" />
+          <Property Name="Sell" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сurrency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Department__Bank__182C9B23">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Bank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deprtment__Curre__2C3393D0">
+          <End Role="Сurrency" Type="Self.Сurrency" Multiplicity="1" />
+          <End Role="DeprtmentsСurrencies" Type="Self.DeprtmentsСurrencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сurrency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeprtmentsСurrencies">
+              <PropertyRef Name="Currency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deprtment__Depar__2D27B809">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="DeprtmentsСurrencies" Type="Self.DeprtmentsСurrencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeprtmentsСurrencies">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanksSystemModelStoreContainer">
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeprtmentsСurrencies" EntityType="Self.DeprtmentsСurrencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сurrency" EntityType="Self.Сurrency" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Department__Bank__182C9B23" Association="Self.FK__Department__Bank__182C9B23">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deprtment__Curre__2C3393D0" Association="Self.FK__Deprtment__Curre__2C3393D0">
+            <End Role="Сurrency" EntitySet="Сurrency" />
+            <End Role="DeprtmentsСurrencies" EntitySet="DeprtmentsСurrencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deprtment__Depar__2D27B809" Association="Self.FK__Deprtment__Depar__2D27B809">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="DeprtmentsСurrencies" EntitySet="DeprtmentsСurrencies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BanksSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Department__Bank__182C9B23" FromRole="Bank" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Сoordinate_x" Type="Single" Nullable="false" />
+          <Property Name="Сoordinate_y" Type="Single" Nullable="false" />
+          <Property Name="Bank" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bank1" Relationship="Self.FK__Department__Bank__182C9B23" FromRole="Department" ToRole="Bank" />
+          <NavigationProperty Name="DeprtmentsСurrencies" Relationship="Self.FK__Deprtment__Depar__2D27B809" FromRole="Department" ToRole="DeprtmentsСurrencies" />
+        </EntityType>
+        <EntityType Name="DeprtmentsСurrencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="Int32" Nullable="false" />
+          <Property Name="Department" Type="Int32" Nullable="false" />
+          <Property Name="Buy" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Sell" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Department1" Relationship="Self.FK__Deprtment__Depar__2D27B809" FromRole="DeprtmentsСurrencies" ToRole="Department" />
+          <NavigationProperty Name="Сurrency" Relationship="Self.FK__Deprtment__Curre__2C3393D0" FromRole="DeprtmentsСurrencies" ToRole="Сurrency" />
+        </EntityType>
+        <EntityType Name="Сurrency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeprtmentsСurrencies" Relationship="Self.FK__Deprtment__Curre__2C3393D0" FromRole="Сurrency" ToRole="DeprtmentsСurrencies" />
+        </EntityType>
+        <Association Name="FK__Department__Bank__182C9B23">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Bank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deprtment__Depar__2D27B809">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="DeprtmentsСurrencies" Type="Self.DeprtmentsСurrencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeprtmentsСurrencies">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deprtment__Curre__2C3393D0">
+          <End Role="Сurrency" Type="Self.Сurrency" Multiplicity="1" />
+          <End Role="DeprtmentsСurrencies" Type="Self.DeprtmentsСurrencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сurrency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeprtmentsСurrencies">
+              <PropertyRef Name="Currency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanksSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bank" EntityType="Self.Bank" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="DeprtmentsСurrencies" EntityType="Self.DeprtmentsСurrencies" />
+          <EntitySet Name="Сurrency" EntityType="Self.Сurrency" />
+          <AssociationSet Name="FK__Department__Bank__182C9B23" Association="Self.FK__Department__Bank__182C9B23">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deprtment__Depar__2D27B809" Association="Self.FK__Deprtment__Depar__2D27B809">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="DeprtmentsСurrencies" EntitySet="DeprtmentsСurrencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deprtment__Curre__2C3393D0" Association="Self.FK__Deprtment__Curre__2C3393D0">
+            <End Role="Сurrency" EntitySet="Сurrency" />
+            <End Role="DeprtmentsСurrencies" EntitySet="DeprtmentsСurrencies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BanksSystemModelStoreContainer" CdmEntityContainer="BanksSystemEntities">
+          <EntitySetMapping Name="Bank">
+            <EntityTypeMapping TypeName="BanksSystemModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="BanksSystemModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Сoordinate_x" ColumnName="Сoordinate_x" />
+                <ScalarProperty Name="Сoordinate_y" ColumnName="Сoordinate_y" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeprtmentsСurrencies">
+            <EntityTypeMapping TypeName="BanksSystemModel.DeprtmentsСurrencies">
+              <MappingFragment StoreEntitySet="DeprtmentsСurrencies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Buy" ColumnName="Buy" />
+                <ScalarProperty Name="Sell" ColumnName="Sell" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сurrency">
+            <EntityTypeMapping TypeName="BanksSystemModel.Сurrency">
+              <MappingFragment StoreEntitySet="Сurrency">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
