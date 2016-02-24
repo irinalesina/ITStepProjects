@@ -25,7 +25,11 @@ namespace CopyFileData
     public partial class MainWindow : Window
     {
         static string src, dest;
+        static double progressCopyProc = 0;
         static object monitor = new object();
+
+        Thread threadCopy;
+        Thread threadRunProgress;
 
         public MainWindow()
         {
@@ -40,7 +44,7 @@ namespace CopyFileData
         private string GetFilePath()
         {
             OpenFileDialog checkFile = new OpenFileDialog();
-            checkFile.InitialDirectory = @"C:\Users\Irishka\Desktop";
+            checkFile.InitialDirectory = @"D:\ITStepProjects\SystemProgramming\2_day";
 
             if (checkFile.ShowDialog() == null)
                 return "";
@@ -57,55 +61,61 @@ namespace CopyFileData
         {
             dest = textBoxDestination.Text;
             src = textBoxSource.Text;
-            Thread threadCopy = new Thread(CopyFile);
-            progressBarCopyProgress.IsIndeterminate = true;
-            
-            threadCopy.Start();
 
-            lock (monitor)
-            {
-                progressBarCopyProgress.IsIndeterminate = false;
-                
-            }
-            //MessageBox.Show("Copying has completed!");
+            threadRunProgress = new Thread(RunProgress);
+            threadCopy = new Thread(CopyFile);
+
+            threadCopy.Start();
+            threadRunProgress.Start();
         }
 
-        static void CopyFile()
+        void CopyFile()
         {
-            lock (monitor)
+            Dispatcher.Invoke(new Action(() => buttonStart.IsEnabled = false));
+            try
             {
-                Thread.Sleep(10000);
-                Stopwatch swTotal = Stopwatch.StartNew();
-                Stopwatch swRead = new Stopwatch();
-                Stopwatch swWrite = new Stopwatch();
-                int numReads = 0;
-                int numWrites = 0;
+
                 using (var outputFile = File.Create(dest))
                 {
                     using (var inputFile = File.OpenRead(src))
                     {
-                        int CopyBufferSize = 1000;
+                        int CopyBufferSize = 100;
                         var buffer = new byte[CopyBufferSize];
                         int bytesRead;
+                        long fileSize = inputFile.Length;
                         do
                         {
-                            swRead.Start();
                             bytesRead = inputFile.Read(buffer, 0, CopyBufferSize);
-                            swRead.Stop();
-                            ++numReads;
                             if (bytesRead != 0)
                             {
-                                swWrite.Start();
                                 outputFile.Write(buffer, 0, bytesRead);
-                                swWrite.Stop();
-                                ++numWrites;
                             }
+                            Thread.Sleep(100);
+
+                            progressCopyProc = (outputFile.Length * 1.0 / fileSize * 100);
+
                         } while (bytesRead != 0);
                     }
                 }
-                swTotal.Stop();
                 MessageBox.Show("Copying has completed!");
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            progressCopyProc = 0;
+            Dispatcher.Invoke(new Action(() => buttonStart.IsEnabled = true));
+        }
+
+        void RunProgress()
+        {
+            while(threadCopy.IsAlive)
+            {
+                Dispatcher.Invoke(new Action(() => progressBarCopyProgress.Value = progressCopyProc));
+            }
+            
+            Dispatcher.Invoke(new Action(() => progressBarCopyProgress.Value = progressCopyProc));
+            
         }
     }
 }
