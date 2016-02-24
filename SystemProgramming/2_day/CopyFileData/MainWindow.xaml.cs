@@ -24,6 +24,9 @@ namespace CopyFileData
     /// </summary>
     public partial class MainWindow : Window
     {
+        static string src, dest;
+        static object monitor = new object();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +40,7 @@ namespace CopyFileData
         private string GetFilePath()
         {
             OpenFileDialog checkFile = new OpenFileDialog();
-            checkFile.InitialDirectory = "c:\\";
+            checkFile.InitialDirectory = @"C:\Users\Irishka\Desktop";
 
             if (checkFile.ShowDialog() == null)
                 return "";
@@ -52,42 +55,57 @@ namespace CopyFileData
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
+            dest = textBoxDestination.Text;
+            src = textBoxSource.Text;
             Thread threadCopy = new Thread(CopyFile);
+            progressBarCopyProgress.IsIndeterminate = true;
+            
+            threadCopy.Start();
+
+            lock (monitor)
+            {
+                progressBarCopyProgress.IsIndeterminate = false;
+                
+            }
+            //MessageBox.Show("Copying has completed!");
         }
 
-        static void CopyFile(object src_, object dest_)
+        static void CopyFile()
         {
-            string src = src_.ToString();
-            string dest = dest_.ToString();
-            Stopwatch swTotal = Stopwatch.StartNew();
-            Stopwatch swRead = new Stopwatch();
-            Stopwatch swWrite = new Stopwatch();
-            int numReads = 0;
-            int numWrites = 0;
-            using (var outputFile = File.Create(dest))
+            lock (monitor)
             {
-                using (var inputFile = File.OpenRead(src))
+                Thread.Sleep(10000);
+                Stopwatch swTotal = Stopwatch.StartNew();
+                Stopwatch swRead = new Stopwatch();
+                Stopwatch swWrite = new Stopwatch();
+                int numReads = 0;
+                int numWrites = 0;
+                using (var outputFile = File.Create(dest))
                 {
-                    int CopyBufferSize = 1000;
-                    var buffer = new byte[CopyBufferSize];
-                    int bytesRead;
-                    do
+                    using (var inputFile = File.OpenRead(src))
                     {
-                        swRead.Start();
-                        bytesRead = inputFile.Read(buffer, 0, CopyBufferSize);
-                        swRead.Stop();
-                        ++numReads;
-                        if (bytesRead != 0)
+                        int CopyBufferSize = 1000;
+                        var buffer = new byte[CopyBufferSize];
+                        int bytesRead;
+                        do
                         {
-                            swWrite.Start();
-                            outputFile.Write(buffer, 0, bytesRead);
-                            swWrite.Stop();
-                            ++numWrites;
-                        }
-                    } while (bytesRead != 0);
+                            swRead.Start();
+                            bytesRead = inputFile.Read(buffer, 0, CopyBufferSize);
+                            swRead.Stop();
+                            ++numReads;
+                            if (bytesRead != 0)
+                            {
+                                swWrite.Start();
+                                outputFile.Write(buffer, 0, bytesRead);
+                                swWrite.Stop();
+                                ++numWrites;
+                            }
+                        } while (bytesRead != 0);
+                    }
                 }
+                swTotal.Stop();
+                MessageBox.Show("Copying has completed!");
             }
-            swTotal.Stop();
         }
     }
 }
