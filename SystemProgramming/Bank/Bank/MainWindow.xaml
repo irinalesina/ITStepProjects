@@ -1,0 +1,27 @@
+﻿<Window x:Class="Bank.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="357*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="lblInfo" Content="INFO" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
+        <Button Name="btnBalance" Content="SHOW BALANCE" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="btnBalance_Click"/>
+        <Button Name="btnInput" Content="INPUT CASH" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Click="btnInput_Click"/>
+        <Button Name="btnOutput" Content="OUTPUT CASH" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1" Click="btnOutput_Click"/>
+        <TextBox Name="tbInput" HorizontalAlignment="Left" Height="23" Margin="20,37,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbOutput" HorizontalAlignment="Left" Height="23" Margin="20,33,0,0" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+
+
+    </Grid>
+</Window>
