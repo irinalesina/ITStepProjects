@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeneratePassword
 {
@@ -16,12 +13,8 @@ namespace GeneratePassword
 
         static void Main(string[] args)
         {
-            for(int i = 0 ; i < digits.Length; i++)
-            {
-                occupiedDigits.Add(i);
-                Fillpassword(i, 0);
-                occupiedDigits.Remove(i);
-            }
+            FindPassword();
+
             Console.WriteLine(passwords.Count);
             Console.ReadKey();
         }
@@ -38,12 +31,8 @@ namespace GeneratePassword
         }
 
 
-        static void Fillpassword(int digPos, int freePlace)
+        static void FindPassword(int freePlace = 0)
         {
-            password[freePlace] = digits[digPos];
-            freePlace++;
-
-
             if (freePlace == password.Length - 1)
             {
                 for (int i = 0; i < digits.Length; i++)
@@ -51,7 +40,10 @@ namespace GeneratePassword
                     if (FindElementInList(i) == false)
                     {
                         password[freePlace] = digits[i];
-                        passwords.Add(password[0].ToString() + password[1].ToString() + password[2].ToString() + password[3].ToString() + password[4].ToString());
+                        string res = "";
+                        foreach (var digit in password)
+                            res += digit.ToString();
+                        passwords.Add(res);
                     }
                 }
                 return;
@@ -63,7 +55,8 @@ namespace GeneratePassword
                 if (FindElementInList(i) == false)
                 {
                     occupiedDigits.Add(i);
-                    Fillpassword(i, freePlace);
+                    password[freePlace] = digits[i];
+                    FindPassword(freePlace + 1);
                     occupiedDigits.Remove(i);
                 }
             }

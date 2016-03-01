@@ -28,9 +28,24 @@
         sflakeHeight = 7;
     </script>
     <script type="text/javascript" src="http://mvcreative.ru/example/6/2/snow.js"></script>
+    <script>
+        function f()
+        {
+            var user = document.getElementById("UserName").value;
+            if(user != "")
+                document.getElementById("UserInfo").innerHTML = ("Hello " +user+ " :)");//textContent - show str how str
+            else
+                alert("Would you please enter some text?") ; 
+            
+        }
+    </script>
 
 </head>
 
 <body>
-
+    <p style="padding: 20px; width: 500px; border: inset #AFD6F5 5px; font-family: monotype corsiva; font-weight: 900; font-size: 50px; color: #FFFFFF; margin: 0 auto" id="UserInfo">Please enter your name!</p>
+    
+    <textarea style="display: block; color: #FFFFFF; font-size: 30px; background: transparent; margin: 30 auto; width: 500px" id="UserName" placeholder="enter your name HERE"></textarea>
+    
+    <button style="display: block; color: #AFD6F5; background: #26587B; margin: 30 auto; width: 200px; height: 50px; font-size: 30px; font-weight: bold" onclick="f()">Click me</button>
 </body>
