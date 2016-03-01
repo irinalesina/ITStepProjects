@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDomain", "AppDomain\AppDomain.csproj", "{504F1FF4-4753-490F-A59F-7CB37F909529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunNotepads", "RunNotepads\RunNotepads.csproj", "{BB2623E2-9F02-4732-9B2D-BB661967BDF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloseAllNotepads", "CloseAllNotepads\CloseAllNotepads.csproj", "{19980300-DD79-43AB-B132-D4D199A12540}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{504F1FF4-4753-490F-A59F-7CB37F909529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504F1FF4-4753-490F-A59F-7CB37F909529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504F1FF4-4753-490F-A59F-7CB37F909529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504F1FF4-4753-490F-A59F-7CB37F909529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2623E2-9F02-4732-9B2D-BB661967BDF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2623E2-9F02-4732-9B2D-BB661967BDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2623E2-9F02-4732-9B2D-BB661967BDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2623E2-9F02-4732-9B2D-BB661967BDF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19980300-DD79-43AB-B132-D4D199A12540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19980300-DD79-43AB-B132-D4D199A12540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19980300-DD79-43AB-B132-D4D199A12540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19980300-DD79-43AB-B132-D4D199A12540}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
